@@ -10,6 +10,8 @@ The system is intentionally file-based and easy to run. It does not require a da
 
 ## 2. How to Run
 
+Recommended Python version: 3.10 or 3.11.
+
 Install dependencies:
 
 ```bash
@@ -36,7 +38,18 @@ streamlit run app.py
 
 If `OPENAI_API_KEY` is unavailable, use mock mode. Auto mode falls back to mock mode when no API key is found.
 
-## 3. Agents
+## 3. Requirement Mapping
+
+| Homework Requirement | ResearchPilot Crew Evidence |
+|---|---|
+| Uses one allowed framework | CrewAI is used as the selected framework. |
+| Uses at least five agents | 8 agents are implemented in `agents.py`. |
+| Uses at least five agentic design patterns | 9 patterns are documented and logged through `PATTERNS_USED` in `tasks.py`. |
+| Independent system | This repository implements ResearchPilot Crew as a standalone research-to-action assistant, independent from the LangGraph-based Re:mind system submitted separately. |
+| Provides described functionality | The system converts raw idea dumps into research briefs, experiment plans, MVP validation plans, action plans, advisor messages, and run logs. |
+| Easy to run | `python main.py --mode mock --input data/sample_inputs/wsdm_idea.txt` runs without API keys. |
+
+## 4. Agents
 
 | # | Agent | Role | Input | Output |
 |---|---|---|---|---|
@@ -49,7 +62,7 @@ If `OPENAI_API_KEY` is unavailable, use mock mode. Auto mode falls back to mock 
 | 7 | Harsh Reviewer | Critiques the plan from reviewer/advisor perspective | Research, experiment, startup, and action plan | Novelty, feasibility, clarity scores, main weakness, required revision |
 | 8 | Report Writer | Produces final Markdown deliverables | All prior agent outputs and warnings | Research brief, advisor message, action summary, run summary |
 
-## 4. Agentic Design Patterns
+## 5. Agentic Design Patterns
 
 | Pattern | Implementation | Purpose |
 |---|---|---|
@@ -63,7 +76,7 @@ If `OPENAI_API_KEY` is unavailable, use mock mode. Auto mode falls back to mock 
 | Exception handling and recovery | Missing API key, live CrewAI failure, invalid structured output, and save errors are handled with warnings and fallback behavior. | Keeps the TA run path stable. |
 | Evaluation and monitoring | `outputs/run_log.json` records mode, timestamp, agents, patterns, warnings, fallback status, completeness score, and TODO count. | Makes execution quality easy to inspect. |
 
-## 5. Example Input and Output
+## 6. Example Input and Output
 
 Example input:
 
@@ -87,13 +100,15 @@ Expected core output in mock mode:
   3. Collect 5 seed papers.
 - Do not do today: frontend redesign, full backend implementation, random paper reading, marketing content generation.
 
-## 6. Evaluation Notes
+## 7. Evaluation Notes
 
 Mock mode ensures reliable execution without an API key. This is the recommended TA grading path:
 
 ```bash
 python main.py --mode mock --input data/sample_inputs/wsdm_idea.txt
 ```
+
+For reliable grading, mock mode deterministically simulates the same 8-agent workflow and preserves all agent outputs in the required schemas. Live mode additionally attempts to execute a CrewAI sequential crew when `OPENAI_API_KEY` is available. If live execution fails, the system records the failure and falls back to mock mode.
 
 The run saves all required inspectable artifacts:
 

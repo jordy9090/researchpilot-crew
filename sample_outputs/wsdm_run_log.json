@@ -1,0 +1,38 @@
+{
+  "timestamp": "2026-06-12T07:47:17.469014+00:00",
+  "mode_requested": "mock",
+  "mode_used": "mock",
+  "task_type": "wsdm_paper",
+  "agents_run": [
+    "Intake & Triage Agent",
+    "Research Question Architect",
+    "Literature Scout",
+    "Experiment Designer",
+    "Startup Validator",
+    "Execution Planner",
+    "Harsh Reviewer",
+    "Report Writer"
+  ],
+  "patterns_used": [
+    "Multi-agent collaboration",
+    "Prompt chaining",
+    "Routing",
+    "Tool use",
+    "Reflection / critic-reviewer",
+    "Memory management",
+    "Guardrails / safety",
+    "Exception handling and recovery",
+    "Evaluation and monitoring"
+  ],
+  "warnings": [],
+  "fallback_used": false,
+  "completeness_score": 8,
+  "number_of_todos": 9,
+  "saved_files": {
+    "research_brief": "outputs\\research_brief.md",
+    "advisor_message": "outputs\\advisor_message.md",
+    "action_plan": "outputs\\action_plan.json",
+    "agent_outputs": "outputs\\agent_outputs.json",
+    "run_log": "outputs\\run_log.json"
+  }
+}

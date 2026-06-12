@@ -1,0 +1,88 @@
+{
+  "today": [
+    "Decide dataset route: real counselor records, PsychEval, ESConv, or synthetic multi-session cases.",
+    "Create the output document schema with evidence-link fields.",
+    "Collect 5 seed papers for RAG, long-term memory, clinical documentation, and source attribution."
+  ],
+  "tomorrow": [
+    "Build a tiny retrieval baseline table: no memory, full history, BM25, vector retrieval, selective retrieval.",
+    "Write 10 synthetic multi-session examples and label relevant prior-session evidence.",
+    "Draft the WSDM problem/gap paragraph and one figure sketch."
+  ],
+  "this_week": [
+    "Run the first offline pilot on 20 to 50 examples.",
+    "Create an error taxonomy for unsupported evidence, missing continuity, and safety-boundary issues.",
+    "Prepare a one-page advisor update with pilot results and dataset decision."
+  ],
+  "priority_ranking": [
+    {
+      "item": "Decide dataset route: real counselor records, PsychEval, ESConv, or synthetic multi-session cases.",
+      "impact": 5,
+      "urgency": 5,
+      "feasibility": 4,
+      "score": 4.8
+    },
+    {
+      "item": "Create the output document schema with evidence-link fields.",
+      "impact": 5,
+      "urgency": 5,
+      "feasibility": 4,
+      "score": 4.8
+    },
+    {
+      "item": "Collect 5 seed papers for RAG, long-term memory, clinical documentation, and source attribution.",
+      "impact": 5,
+      "urgency": 5,
+      "feasibility": 4,
+      "score": 4.8
+    },
+    {
+      "item": "Build a tiny retrieval baseline table: no memory, full history, BM25, vector retrieval, selective retrieval.",
+      "impact": 4,
+      "urgency": 3,
+      "feasibility": 4,
+      "score": 3.65
+    },
+    {
+      "item": "Write 10 synthetic multi-session examples and label relevant prior-session evidence.",
+      "impact": 4,
+      "urgency": 3,
+      "feasibility": 4,
+      "score": 3.65
+    },
+    {
+      "item": "Draft the WSDM problem/gap paragraph and one figure sketch.",
+      "impact": 4,
+      "urgency": 3,
+      "feasibility": 4,
+      "score": 3.65
+    },
+    {
+      "item": "Run the first offline pilot on 20 to 50 examples.",
+      "impact": 4,
+      "urgency": 3,
+      "feasibility": 4,
+      "score": 3.65
+    },
+    {
+      "item": "Create an error taxonomy for unsupported evidence, missing continuity, and safety-boundary issues.",
+      "impact": 4,
+      "urgency": 3,
+      "feasibility": 4,
+      "score": 3.65
+    },
+    {
+      "item": "Prepare a one-page advisor update with pilot results and dataset decision.",
+      "impact": 4,
+      "urgency": 3,
+      "feasibility": 4,
+      "score": 3.65
+    }
+  ],
+  "do_not_do_today": [
+    "frontend redesign",
+    "full backend implementation",
+    "reading 30 papers randomly",
+    "marketing content generation"
+  ]
+}

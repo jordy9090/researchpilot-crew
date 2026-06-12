@@ -33,18 +33,20 @@ def load_json(path: str | Path, default: Any) -> Any:
 
 def save_json(filename: str, data: dict[str, Any], output_dir: str = "outputs") -> str:
     ensure_output_dir(output_dir)
-    path = resolve_project_path(output_dir) / filename
+    output_path = Path(output_dir)
+    path = resolve_project_path(output_path) / filename
     with path.open("w", encoding="utf-8") as file:
         json.dump(data, file, indent=2, ensure_ascii=False)
-    return str(path)
+    return str(path if output_path.is_absolute() else output_path / filename)
 
 
 def save_markdown(filename: str, content: str, output_dir: str = "outputs") -> str:
     ensure_output_dir(output_dir)
-    path = resolve_project_path(output_dir) / filename
+    output_path = Path(output_dir)
+    path = resolve_project_path(output_path) / filename
     with path.open("w", encoding="utf-8") as file:
         file.write(content)
-    return str(path)
+    return str(path if output_path.is_absolute() else output_path / filename)
 
 
 def validate_required_keys(data: dict[str, Any], required_keys: list[str]) -> tuple[bool, list[str]]:

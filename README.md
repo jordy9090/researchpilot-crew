@@ -4,11 +4,44 @@ ResearchPilot Crew is a CrewAI-based multi-agent system that turns an unstructur
 
 The default mode is deterministic mock mode, so the TA can run and inspect the system without an API key.
 
+This repository corresponds to the CrewAI system for the homework. It is independent from the LangGraph-based Re:mind system submitted separately.
+
+## TA Quick Start
+
+Recommended Python version: 3.10 or 3.11.
+
+```bash
+pip install -r requirements.txt
+python main.py --mode mock --input data/sample_inputs/wsdm_idea.txt
+```
+
+This command runs the full 8-agent workflow without any API key and generates:
+
+- `outputs/research_brief.md`
+- `outputs/advisor_message.md`
+- `outputs/action_plan.json`
+- `outputs/agent_outputs.json`
+- `outputs/run_log.json`
+
+Optional smoke test:
+
+```bash
+python smoke_test.py
+```
+
+If the TA wants to inspect an example without running the program first, see `sample_outputs/`.
+
 ## Why This Is an Agentic System
 
 ResearchPilot Crew uses 8 specialized agents that collaborate as a research team. The workflow routes the input, chains agent outputs, uses local tools, applies guardrails, reflects through a harsh reviewer, writes outputs to files, and records evaluation logs.
 
 Live mode contains a CrewAI sequential crew. If CrewAI or an API key is unavailable, the system falls back to mock mode rather than crashing.
+
+## API Key Policy
+
+No API keys are included in this repository. `.env` is ignored by git, and `.env.example` contains empty placeholders only.
+
+Mock mode is the recommended reproducible grading path. Live mode optionally reads `OPENAI_API_KEY` from the environment if the TA wants to test with a lab-owned key.
 
 ## Agents
 
