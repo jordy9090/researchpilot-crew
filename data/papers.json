@@ -1,0 +1,98 @@
+[
+  {
+    "title": "Sample local paper card: Retrieval-Augmented Generation Foundations",
+    "year": 2024,
+    "venue": "Local demo database",
+    "tags": ["RAG", "retrieval", "LLM", "evidence-grounding"],
+    "abstract": "Overview card for retrieval-augmented generation systems that connect generated text to external evidence.",
+    "why_relevant": "Frames the baseline comparison between no memory, retrieved context, and evidence-grounded generation."
+  },
+  {
+    "title": "Sample local paper card: Adaptive RAG for Dynamic Context Selection",
+    "year": 2024,
+    "venue": "Local demo database",
+    "tags": ["adaptive-rag", "context-selection", "evaluation"],
+    "abstract": "Demo card about systems that decide when and what to retrieve instead of always using the same retrieval policy.",
+    "why_relevant": "Supports the selective retrieval framing for prior-session counseling context."
+  },
+  {
+    "title": "Sample local paper card: Agentic RAG Planning and Tool Use",
+    "year": 2025,
+    "venue": "Local demo database",
+    "tags": ["agentic-rag", "agents", "tool-use", "planning"],
+    "abstract": "Demo card about agent workflows that decompose retrieval, critique, and synthesis into separate steps.",
+    "why_relevant": "Gives language for multi-agent decomposition and tool-mediated literature search."
+  },
+  {
+    "title": "Sample local paper card: Long-Context LLM Memory Limits",
+    "year": 2024,
+    "venue": "Local demo database",
+    "tags": ["long-context", "memory", "LLM", "evaluation"],
+    "abstract": "Demo card about cost, distraction, and reliability issues in long-context prompting.",
+    "why_relevant": "Motivates why full-history prompting is not enough for longitudinal counseling notes."
+  },
+  {
+    "title": "Sample local paper card: Conversational Memory Retrieval",
+    "year": 2023,
+    "venue": "Local demo database",
+    "tags": ["conversation", "memory", "retrieval", "temporal-relevance"],
+    "abstract": "Demo card about retrieving prior conversation facts by relevance, recency, and user intent.",
+    "why_relevant": "Directly informs prior-session memory selection and temporal validity."
+  },
+  {
+    "title": "Sample local paper card: Clinical Documentation Summarization",
+    "year": 2024,
+    "venue": "Local demo database",
+    "tags": ["clinical-documentation", "summarization", "healthcare", "workflow"],
+    "abstract": "Demo card about turning clinical conversations into structured draft notes with human review.",
+    "why_relevant": "Anchors the documentation workflow and review-burden evaluation."
+  },
+  {
+    "title": "Sample local paper card: Evidence-Grounded Generation with Source Links",
+    "year": 2024,
+    "venue": "Local demo database",
+    "tags": ["evidence-grounding", "source-attribution", "faithfulness", "LLM"],
+    "abstract": "Demo card about linking generated claims to source snippets and measuring unsupported statements.",
+    "why_relevant": "Matches the evidence mapping requirement for Re:mind notes."
+  },
+  {
+    "title": "Sample local paper card: Human-AI Verification Workflows",
+    "year": 2024,
+    "venue": "Local demo database",
+    "tags": ["human-ai-interaction", "verification", "review", "trust"],
+    "abstract": "Demo card about interfaces that help users inspect, edit, and approve AI-generated outputs.",
+    "why_relevant": "Supports the counselor-in-the-loop verification contribution."
+  },
+  {
+    "title": "Sample local paper card: Source Attribution Interfaces",
+    "year": 2023,
+    "venue": "Local demo database",
+    "tags": ["source-attribution", "interface", "explainability", "HCI"],
+    "abstract": "Demo card about UI patterns for showing why a generated statement is supported by evidence.",
+    "why_relevant": "Helps design the document transform preview and evidence-linked draft."
+  },
+  {
+    "title": "Sample local paper card: Mental-Health LLM Evaluation",
+    "year": 2024,
+    "venue": "Local demo database",
+    "tags": ["mental-health", "LLM", "evaluation", "safety"],
+    "abstract": "Demo card about evaluating LLM behavior in mental-health-adjacent settings without replacing clinicians.",
+    "why_relevant": "Keeps counseling domain claims within documentation assistance and safety boundaries."
+  },
+  {
+    "title": "Sample local paper card: Counseling Documentation Workflow",
+    "year": 2025,
+    "venue": "Local demo database",
+    "tags": ["counseling", "documentation", "workflow", "MVP"],
+    "abstract": "Demo card about counselor documentation burden, structured records, and review checkpoints.",
+    "why_relevant": "Connects the research plan to Re:mind's target user workflow."
+  },
+  {
+    "title": "Sample local paper card: LLM Safety Guardrails for High-Stakes Drafting",
+    "year": 2024,
+    "venue": "Local demo database",
+    "tags": ["guardrails", "safety", "high-stakes", "review"],
+    "abstract": "Demo card about preventing unsupported inferences and keeping humans responsible for final decisions.",
+    "why_relevant": "Supports safety guardrails, missing-information flags, and counselor-review fields."
+  }
+]

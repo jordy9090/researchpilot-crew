@@ -1,0 +1,1 @@
+I want to develop a WSDM full paper from Re:mind. The topic is long-term memory retrieval and evidence-grounded counseling documentation. I need a research question, related work direction, experiment plan, MVP connection, and this week's TODO. Data may come from real counselor records, PsychEval, ESConv, or synthetic multi-session counseling data.

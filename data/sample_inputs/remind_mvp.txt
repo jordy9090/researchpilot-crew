@@ -1,0 +1,1 @@
+I want to improve Re:mind as an MVP for counselors. The product helps counselors turn session notes, transcripts, and previous summaries into structured counseling records. I need to decide the next MVP feature, user test plan, and what to build this week.
