@@ -23,6 +23,7 @@ Run the CLI in live CrewAI mode:
 ```bash
 export OPENAI_API_KEY=your_lab_key_here
 export USE_STUB=0
+export CREWAI_TRACING_ENABLED=false
 python main.py --mode live --input data/sample_inputs/wsdm_idea.txt
 ```
 
@@ -31,6 +32,7 @@ For Windows PowerShell:
 ```powershell
 $env:OPENAI_API_KEY="your_lab_key_here"
 $env:USE_STUB="0"
+$env:CREWAI_TRACING_ENABLED="false"
 python main.py --mode live --input data/sample_inputs/wsdm_idea.txt
 ```
 
@@ -40,7 +42,7 @@ Run the Streamlit frontend:
 streamlit run app.py
 ```
 
-The primary execution path is live CrewAI mode. The TA can provide a lab-owned API key through the `OPENAI_API_KEY` environment variable and run the system with `--mode live`. The runner also includes deterministic fallback behavior for environment-level failures, and all such events are recorded in `outputs/run_log.json`.
+The primary execution path is live CrewAI mode. The TA can provide a lab-owned API key through the `OPENAI_API_KEY` environment variable and run the system with `--mode live`. CrewAI tracing is disabled by default to keep CLI execution non-interactive. The runner also includes deterministic fallback behavior for environment-level failures, and all such events are recorded in `outputs/run_log.json`.
 
 ## 3. Requirement Mapping
 

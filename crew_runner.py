@@ -73,6 +73,7 @@ def run_research_pilot(
     user_input = (user_input or "").strip()
 
     _load_dotenv_if_available()
+    _disable_crewai_tracing_by_default()
 
     if len(user_input) < 10:
         warnings.append(
@@ -185,6 +186,10 @@ def _load_dotenv_if_available() -> None:
         return
 
 
+def _disable_crewai_tracing_by_default() -> None:
+    os.environ.setdefault("CREWAI_TRACING_ENABLED", "false")
+
+
 def _should_try_live(mode_requested: str) -> bool:
     if os.getenv("USE_STUB") == "1":
         return False
@@ -194,6 +199,7 @@ def _should_try_live(mode_requested: str) -> bool:
 
 
 def _run_live_crewai(user_input: str, task_type: str) -> dict[str, str]:
+    os.environ.setdefault("CREWAI_TRACING_ENABLED", "false")
     try:
         from crewai import Crew, Process
     except Exception as exc:  # pragma: no cover - depends on optional live dependency

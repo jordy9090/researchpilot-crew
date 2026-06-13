@@ -14,6 +14,7 @@ Recommended Python version: 3.10 or 3.11.
 pip install -r requirements.txt
 export OPENAI_API_KEY=your_lab_key_here
 export USE_STUB=0
+export CREWAI_TRACING_ENABLED=false
 python main.py --mode live --input data/sample_inputs/wsdm_idea.txt
 ```
 
@@ -22,6 +23,7 @@ For Windows PowerShell:
 ```powershell
 $env:OPENAI_API_KEY="your_lab_key_here"
 $env:USE_STUB="0"
+$env:CREWAI_TRACING_ENABLED="false"
 python main.py --mode live --input data/sample_inputs/wsdm_idea.txt
 ```
 
@@ -45,7 +47,7 @@ Live mode contains a CrewAI sequential crew implemented with `Agent`, `Task`, `C
 
 No API keys are included in this repository. `.env` is ignored by git, and `.env.example` contains only non-secret placeholders.
 
-Live mode reads `OPENAI_API_KEY` from the environment so the TA can test with a lab-owned key. The runner also includes deterministic fallback behavior for environment-level failures, and all such events are recorded in `outputs/run_log.json`.
+Live mode reads `OPENAI_API_KEY` from the environment so the TA can test with a lab-owned key. CrewAI tracing is disabled by default to keep CLI execution non-interactive. The runner also includes deterministic fallback behavior for environment-level failures, and all such events are recorded in `outputs/run_log.json`.
 
 ## Agents
 
