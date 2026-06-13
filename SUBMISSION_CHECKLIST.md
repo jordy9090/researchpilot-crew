@@ -8,13 +8,9 @@ Recommended run command:
 
 ```bash
 pip install -r requirements.txt
-python main.py --mode mock --input data/sample_inputs/wsdm_idea.txt
-```
-
-Optional smoke test:
-
-```bash
-python smoke_test.py
+export OPENAI_API_KEY=your_lab_key_here
+export USE_STUB=0
+python main.py --mode live --input data/sample_inputs/wsdm_idea.txt
 ```
 
 Streamlit demo:

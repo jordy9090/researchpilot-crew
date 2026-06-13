@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-06-12T07:47:17.469014+00:00",
-  "mode_requested": "mock",
+  "timestamp": "2026-06-13T13:28:32.652593+00:00",
+  "mode_requested": "live",
   "mode_used": "mock",
   "task_type": "wsdm_paper",
   "agents_run": [
@@ -24,8 +24,10 @@
     "Exception handling and recovery",
     "Evaluation and monitoring"
   ],
-  "warnings": [],
-  "fallback_used": false,
+  "warnings": [
+    "OPENAI_API_KEY missing. Fallback to mock mode."
+  ],
+  "fallback_used": true,
   "completeness_score": 8,
   "number_of_todos": 9,
   "saved_files": {

@@ -8,7 +8,8 @@ I want to develop a WSDM full paper from Re:mind. The topic is long-term memory 
 - Urgency: high
 - Main goal: Shape a WSDM-style research direction from Re:mind into an experiment-ready paper plan.
 - Recommended route: wsdm_paper -> research question -> literature -> experiment -> MVP link -> 48-hour plan
-- Warnings: none
+- Warnings:
+  - OPENAI_API_KEY missing. Fallback to mock mode.
 
 ## 3. Core Research Question
 How can an LLM-based counseling documentation system selectively retrieve prior-session information that is relevant, temporally valid, and evidence-grounded for the current counseling record?

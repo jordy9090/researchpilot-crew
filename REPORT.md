@@ -18,16 +18,20 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Run the CLI in reliable mock mode:
+Run the CLI in live CrewAI mode:
 
 ```bash
-python main.py --mode mock --input data/sample_inputs/wsdm_idea.txt
+export OPENAI_API_KEY=your_lab_key_here
+export USE_STUB=0
+python main.py --mode live --input data/sample_inputs/wsdm_idea.txt
 ```
 
-Run with direct text:
+For Windows PowerShell:
 
-```bash
-python main.py --mode mock --text "I want to build a WSDM paper from Re:mind long-term memory retrieval."
+```powershell
+$env:OPENAI_API_KEY="your_lab_key_here"
+$env:USE_STUB="0"
+python main.py --mode live --input data/sample_inputs/wsdm_idea.txt
 ```
 
 Run the Streamlit frontend:
@@ -36,18 +40,18 @@ Run the Streamlit frontend:
 streamlit run app.py
 ```
 
-If `OPENAI_API_KEY` is unavailable, use mock mode. Auto mode falls back to mock mode when no API key is found.
+The primary execution path is live CrewAI mode. The TA can provide a lab-owned API key through the `OPENAI_API_KEY` environment variable and run the system with `--mode live`. The runner also includes deterministic fallback behavior for environment-level failures, and all such events are recorded in `outputs/run_log.json`.
 
 ## 3. Requirement Mapping
 
 | Homework Requirement | ResearchPilot Crew Evidence |
 |---|---|
-| Uses one allowed framework | CrewAI is used as the selected framework. |
+| Uses one allowed framework | CrewAI is used through `Agent`, `Task`, `Crew`, and `Process.sequential` in `agents.py`, `tasks.py`, and `crew_runner.py`. |
 | Uses at least five agents | 8 agents are implemented in `agents.py`. |
 | Uses at least five agentic design patterns | 9 patterns are documented and logged through `PATTERNS_USED` in `tasks.py`. |
 | Independent system | This repository implements ResearchPilot Crew as a standalone research-to-action assistant, independent from the LangGraph-based Re:mind system submitted separately. |
 | Provides described functionality | The system converts raw idea dumps into research briefs, experiment plans, MVP validation plans, action plans, advisor messages, and run logs. |
-| Easy to run | `python main.py --mode mock --input data/sample_inputs/wsdm_idea.txt` runs without API keys. |
+| Easy to run | `python main.py --mode live --input data/sample_inputs/wsdm_idea.txt` runs with an environment-provided lab-owned API key and saves inspectable Markdown/JSON outputs. |
 
 ## 4. Agents
 
@@ -84,7 +88,7 @@ Example input:
 I want to develop a WSDM full paper from Re:mind. The topic is long-term memory retrieval and evidence-grounded counseling documentation. I need a research question, related work direction, experiment plan, MVP connection, and this week's TODO. Data may come from real counselor records, PsychEval, ESConv, or synthetic multi-session counseling data.
 ```
 
-Expected core output in mock mode:
+Expected core output:
 
 - Core research question: How can an LLM-based counseling documentation system selectively retrieve prior-session information that is relevant, temporally valid, and evidence-grounded for the current counseling record?
 - One-line idea: Selective long-term memory retrieval for evidence-grounded counseling documentation.
@@ -102,13 +106,13 @@ Expected core output in mock mode:
 
 ## 7. Evaluation Notes
 
-Mock mode ensures reliable execution without an API key. This is the recommended TA grading path:
+The primary execution path is live CrewAI mode:
 
 ```bash
-python main.py --mode mock --input data/sample_inputs/wsdm_idea.txt
+python main.py --mode live --input data/sample_inputs/wsdm_idea.txt
 ```
 
-For reliable grading, mock mode deterministically simulates the same 8-agent workflow and preserves all agent outputs in the required schemas. Live mode additionally attempts to execute a CrewAI sequential crew when `OPENAI_API_KEY` is available. If live execution fails, the system records the failure and falls back to mock mode.
+The TA can provide a lab-owned API key through the `OPENAI_API_KEY` environment variable. The runner also includes deterministic fallback behavior for environment-level failures, and all such events are recorded in `outputs/run_log.json`.
 
 The run saves all required inspectable artifacts:
 
