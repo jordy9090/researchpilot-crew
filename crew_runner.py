@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+import contextlib
+import io
+import logging
 import os
 from datetime import datetime, timezone
-from typing import Any
+from typing import Any, Iterator
 
 from agents import AGENT_NAMES, create_crewai_agents
 from memory_store import append_memory_entry
@@ -73,7 +76,7 @@ def run_research_pilot(
     user_input = (user_input or "").strip()
 
     _load_dotenv_if_available()
-    _disable_crewai_tracing_by_default()
+    _configure_crewai_noninteractive_defaults()
 
     if len(user_input) < 10:
         warnings.append(
@@ -186,8 +189,44 @@ def _load_dotenv_if_available() -> None:
         return
 
 
-def _disable_crewai_tracing_by_default() -> None:
-    os.environ.setdefault("CREWAI_TRACING_ENABLED", "false")
+def _configure_crewai_noninteractive_defaults() -> None:
+    os.environ.setdefault("CREWAI_TESTING", "true")
+
+
+@contextlib.contextmanager
+def _quiet_crewai_console() -> Iterator[None]:
+    previous_disable_level = logging.root.manager.disable
+    stdout_buffer = io.StringIO()
+    stderr_buffer = io.StringIO()
+    logging.disable(logging.CRITICAL)
+    try:
+        with (
+            contextlib.redirect_stdout(stdout_buffer),
+            contextlib.redirect_stderr(stderr_buffer),
+        ):
+            yield
+    finally:
+        logging.disable(previous_disable_level)
+
+
+@contextlib.contextmanager
+def _suppress_crewai_trace_messages() -> Iterator[None]:
+    tracing_utils = None
+    token = None
+    try:
+        from crewai.events.listeners.tracing import utils as tracing_utils
+
+        token = tracing_utils.set_suppress_tracing_messages(True)
+    except Exception:
+        tracing_utils = None
+    try:
+        yield
+    finally:
+        if tracing_utils is not None and token is not None:
+            try:
+                tracing_utils._suppress_tracing_messages.reset(token)
+            except Exception:
+                pass
 
 
 def _should_try_live(mode_requested: str) -> bool:
@@ -199,7 +238,7 @@ def _should_try_live(mode_requested: str) -> bool:
 
 
 def _run_live_crewai(user_input: str, task_type: str) -> dict[str, str]:
-    os.environ.setdefault("CREWAI_TRACING_ENABLED", "false")
+    _configure_crewai_noninteractive_defaults()
     try:
         from crewai import Crew, Process
     except Exception as exc:  # pragma: no cover - depends on optional live dependency
@@ -207,13 +246,15 @@ def _run_live_crewai(user_input: str, task_type: str) -> dict[str, str]:
 
     crew_agents = create_crewai_agents()
     crew_tasks = create_crewai_tasks(crew_agents, user_input, task_type)
-    crew = Crew(
-        agents=list(crew_agents.values()),
-        tasks=crew_tasks,
-        process=Process.sequential,
-        verbose=False,
-    )
-    crew.kickoff()
+    with _quiet_crewai_console(), _suppress_crewai_trace_messages():
+        crew = Crew(
+            agents=list(crew_agents.values()),
+            tasks=crew_tasks,
+            process=Process.sequential,
+            verbose=False,
+            tracing=False,
+        )
+        crew.kickoff()
 
     outputs: dict[str, str] = {}
     for agent_name, task in zip(AGENT_NAMES, crew_tasks):
