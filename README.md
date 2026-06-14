@@ -6,7 +6,7 @@ The primary execution path is live CrewAI mode. The TA can provide a lab-owned A
 
 This repository corresponds to the CrewAI system for the homework. It is independent from the LangGraph-based Re:mind system submitted separately.
 
-## TA Quick Start
+## Quick Start
 
 Recommended Python version: 3.10 or 3.11.
 
@@ -14,7 +14,7 @@ Download the repository ZIP, extract it, open a terminal in the extracted folder
 
 ```bash
 pip install -r requirements.txt
-export OPENAI_API_KEY=your_lab_key_here
+export OPENAI_API_KEY=your_api_key_here
 export USE_STUB=0
 python main.py --mode live --input data/sample_inputs/wsdm_idea.txt
 ```
@@ -22,7 +22,7 @@ python main.py --mode live --input data/sample_inputs/wsdm_idea.txt
 For Windows PowerShell:
 
 ```powershell
-$env:OPENAI_API_KEY="your_lab_key_here"
+$env:OPENAI_API_KEY="your_api_key_here"
 $env:USE_STUB="0"
 python main.py --mode live --input data/sample_inputs/wsdm_idea.txt
 ```
@@ -42,12 +42,6 @@ If the TA wants to inspect an example without running the program first, see `sa
 ResearchPilot Crew uses 8 specialized agents that collaborate as a research team. The workflow routes the input, chains agent outputs, uses local tools, applies guardrails, reflects through a harsh reviewer, writes outputs to files, and records evaluation logs.
 
 Live mode contains a CrewAI sequential crew implemented with `Agent`, `Task`, `Crew`, and `Process.sequential`.
-
-## API Key Policy
-
-No API keys are included in this repository. `.env` is ignored by git, and `.env.example` contains only non-secret placeholders.
-
-Live mode reads `OPENAI_API_KEY` from the environment so the TA can test with a lab-owned key. The CLI disables CrewAI tracing prompts by default to keep execution non-interactive. The runner also includes deterministic fallback behavior for environment-level failures, and all such events are recorded in `outputs/run_log.json`.
 
 ## Agents
 
